@@ -29,17 +29,5 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo 'Pipeline completed!'
-        }
-        success {
-            echo 'Pipeline ran successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
 }
 }
