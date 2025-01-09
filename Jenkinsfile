@@ -22,7 +22,7 @@ pipeline {
                     echo 'Running the EasyDevOps application...'
                     // Ga naar de frontend directory en start de applicatie
                     bat '''
-                        "C:\\Program Files\\Git\\bin\\bash.exe" -c "cd C:/Users/Giovd/AppData/Local/Jenkins/.jenkins/workspace/github/Frontend && dotnet run"
+                        "C:\\Program Files\\Git\\bin\\bash.exe" -c "cd /c/Users/Giovd/AppData/Local/Jenkins/.jenkins/workspace/github/Frontend && dotnet run"
                     '''
                 }
             }
