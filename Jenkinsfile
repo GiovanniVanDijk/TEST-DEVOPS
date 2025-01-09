@@ -23,8 +23,9 @@ pipeline {
                 script {
                     echo 'Running the EasyDevOps application...'
                     // Ga naar de frontend directory en start de applicatie
-                    dir('TEST-DEVOPS') {
-                        sh 'dotnet run'
+                    bat '''
+                        "C:\\Program Files\\Git\\bin\\bash.exe" -c "cd TEST-DEVOPS/frontend && dotnet run"
+                    '''
                 }
             }
         }
