@@ -6,9 +6,13 @@ pipeline {
             steps {
                 script {
                     echo 'Updating package list and installing dependencies...'
-                    // Update package list en installeer Git
-                    sh 'sudo apt update'
-                    sh 'sudo apt install -y git'
+                    // Update package list en installeer Git via SSH
+                    sh '''
+                        sshpass -p "Welkom01!" ssh -o StrictHostKeyChecking=no giovanni@192.169.36.148 "
+                            sudo apt update &&
+                            sudo apt install -y git
+                        "
+                    '''
                 }
             }
         }
@@ -17,10 +21,14 @@ pipeline {
             steps {
                 script {
                     echo 'Installing .NET SDK 8...'
-                    // Download en installeer de .NET SDK
-                    sh 'wget https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh'
-                    sh 'chmod +x dotnet-install.sh'
-                    sh './dotnet-install.sh --version 8.0.100'
+                    // Installeer de .NET SDK via SSH
+                    sh '''
+                        sshpass -p "Welkom01!" ssh -o StrictHostKeyChecking=no giovanni@192.169.36.148 "
+                            wget https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh &&
+                            chmod +x dotnet-install.sh &&
+                            ./dotnet-install.sh --version 8.0.100
+                        "
+                    '''
                 }
             }
         }
@@ -29,8 +37,12 @@ pipeline {
             steps {
                 script {
                     echo 'Cloning the EasyDevOps repository...'
-                    // Clone de repository
-                    sh 'git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS'
+                    // Clone de repository via SSH
+                    sh '''
+                        sshpass -p "Welkom01!" ssh -o StrictHostKeyChecking=no giovanni@192.169.36.148 "
+                            git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS.git
+                        "
+                    '''
                 }
             }
         }
@@ -39,8 +51,13 @@ pipeline {
             steps {
                 script {
                     echo 'Running the EasyDevOps application...'
-                    // Ga naar de frontend directory en start de applicatie
-                    sh 'cd TEST-DEVOPS/frontend && dotnet run'
+                    // Ga naar de frontend directory en start de applicatie via SSH
+                    sh '''
+                        sshpass -p "Welkom01!" ssh -o StrictHostKeyChecking=no giovanni@192.169.36.148 "
+                            cd TEST-DEVOPS/frontend &&
+                            dotnet run
+                        "
+                    '''
                 }
             }
         }
