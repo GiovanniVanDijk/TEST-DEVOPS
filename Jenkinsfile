@@ -23,7 +23,7 @@ pipeline {
                 script {
                     echo 'Running the EasyDevOps application...'
                     // Ga naar de frontend directory en start de applicatie
-                    dir('TEST-DEVOPS/frontend') {
+                    dir('TEST-DEVOPS') {
                         sh 'dotnet run'
                 }
             }
