@@ -3,16 +3,17 @@ pipeline {
 
     stages {
         stage('Clone Repository') {
-            steps {
-                script {
-                    echo 'Cloning the EasyDevOps repository...'
-                    // Verwijder de bestaande directory (indien aanwezig) en kloon opnieuw
-                    bat '''
-                        if exist TEST-DEVOPS (
-                            rmdir /s /q TEST-DEVOPS
-                        )
-                        git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS.git
-                    '''
+     steps {
+        script {
+            echo 'Cloning or updating the EasyDevOps repository...'
+            bat '''
+                if exist TEST-DEVOPS (
+                    cd TEST-DEVOPS
+                    git pull origin main
+                ) else (
+                    git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS.git
+                )
+            '''
                 }
             }
         }
