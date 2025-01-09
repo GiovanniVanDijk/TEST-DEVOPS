@@ -6,8 +6,11 @@ pipeline {
             steps {
                 script {
                     echo 'Cloning the EasyDevOps repository...'
-                    // Clone de repository
+                    // Verwijder de bestaande directory (indien aanwezig) en kloon opnieuw
                     bat '''
+                        if exist TEST-DEVOPS (
+                            rmdir /s /q TEST-DEVOPS
+                        )
                         git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS.git
                     '''
                 }
