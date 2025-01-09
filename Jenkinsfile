@@ -1,6 +1,5 @@
 pipeline {
     agent {
-        label 'windows' // Zorg ervoor dat de Jenkins-agent op de Windows-server draait
     }
 
     stages {
