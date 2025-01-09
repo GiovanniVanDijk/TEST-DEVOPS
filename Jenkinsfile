@@ -10,8 +10,6 @@ pipeline {
                 if exist TEST-DEVOPS (
                     cd TEST-DEVOPS
                     git pull origin main
-                ) else (
-                    git clone https://github.com/GiovanniVanDijk/TEST-DEVOPS.git
                 )
             '''
                 }
