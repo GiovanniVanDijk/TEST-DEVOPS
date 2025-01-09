@@ -1,20 +1,6 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Setup Environment') {
-            steps {
-                script {
-                    echo 'Setting up environment on Windows Server...'
-                    // Update omgeving en installeer dependencies
-                    bat '''
-                        choco install git -y
-                        choco install dotnet-sdk -y
-                    '''
-                }
-            }
-        }
-
+    
         stage('Clone Repository') {
             steps {
                 script {
