@@ -1,6 +1,7 @@
 pipeline {
     agent any
-    
+
+    stages {
         stage('Clone Repository') {
             steps {
                 script {
@@ -38,3 +39,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
+}
