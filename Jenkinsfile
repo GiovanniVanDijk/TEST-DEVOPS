@@ -1,33 +1,25 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone Repository') {
-     steps {
-        script {
-            echo 'Cloning or updating the EasyDevOps repository...'
-            bat '''
-                if exist TEST-DEVOPS (
-                    cd TEST-DEVOPS
-                    git pull origin main
-                )
-            '''
+        stage('Checkout') {
+            steps {
+                echo "test"
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                echo "Build"
+                bat "dir"
+                dir('frontend') {
+                    bat "dotnet build"
                 }
             }
         }
-
-        stage('Run Application') {
+        stage('Test') {
             steps {
-                script {
-                    echo 'Running the EasyDevOps application...'
-                    // Ga naar de frontend directory en start de applicatie
-                    bat """
-                        "C:\\Program Files\\Git\\bin\\bash.exe" -c '
-                        cd /c/Users/Giovd/AppData/Local/Jenkins/.jenkins/workspace/github/Frontend &&
-                        dotnet run
-                        '
-                    """
-                }
+                echo "Test"
+                // Add your test commands here
             }
         }
     }
