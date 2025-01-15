@@ -14,18 +14,14 @@ pipeline {
                 dir('frontend') {
                     bat "dotnet build"
                 }
-                dir('frontend\\ConsoleApp\\bin\\Debug\\net8.0') {
-                    bat "ConsoleApp.exe"
-                }
-
-				
             }
         }
         stage('Test') {
             steps {
                 echo "Test"
-                
+                // Add your test commands here
             }
         }
     }
 }
+
